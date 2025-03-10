@@ -1,4 +1,4 @@
-# Ruth Miskin Portal
+# Django Portal Demo
 
 ## Overview
 
