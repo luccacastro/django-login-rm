@@ -35,10 +35,7 @@ class SignUpView(CreateView):
     def post(self, request):
         form = AccountCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=True) 
-            user.username = user.email
-            user.is_active = False 
-            user.save(update_fields=["username", "is_active"])
+            user = form.save(commit=True)
             self.send_confirmation_email(user)
             return redirect("validation_required")
         return render(request, "registration/signup.html", {"form": form})
