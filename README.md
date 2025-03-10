@@ -6,6 +6,8 @@ This app is fairly straightforward, focusing on two clear domains: accounts for 
 
 One of the challenges was dealing with large CSV files (potentially tens of thousands of rows). To handle this, we used Pandas for fast reading and bulk creation in Django, carefully avoiding slow lookups by using dictionaries or sets. We also integrated a searchable dropdown (Select2 widget with an AJAX endpoint) so users can find their school without loading every record at once, or in this case, making the register page usable as it'd crash due to the huge payload.
 
+I've also made the decision to separate User (Django’s built-in authentication model) and Member (which contains additional user-related data) was intentional. Keeping authentication-related fields within Django’s User model ensures compatibility with built-in authentication and permission handling. Meanwhile, Member extends this functionality by storing school and birth date information, keeping domain-specific user data separate. 
+
 A major focus was ensuring users can register with a valid school without loading thousands of records into a dropdown. The autocomplete search field makes this possible, querying the backend dynamically for relevant schools based on user input.
 
 ## Installation & Setup
