@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="flex items-center justify-center px-4">
+    <div class="w-full max-w-lg bg-white shadow-md rounded-md p-8 border border-gray-200 text-center">
+        <svg class="w-16 h-16 mx-auto mb-4 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" d="M12 1.5a10.5 10.5 0 1 1 0 21 10.5 10.5 0 0 1 0-21ZM10.28 14.47 16.53 8.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-3.5-3.5a.75.75 0 1 1 1.06-1.06l2.94 2.94Z" clip-rule="evenodd"/>
+        </svg>
+
+        <h2 class="text-3xl text-[#00979e] font-bold mb-4">Account Activated</h2>
+        <p class="text-lg text-gray-800 mb-4">{{ message }}</p>
+        <p class="text-base text-gray-600">Redirecting you to login in <span id="countdown" class="font-bold text-[#00979e]">3</span> seconds...</p>
+        <a href="{% url 'login' %}" class="text-[#00979e] hover:underline text-lg mt-4 inline-block">Go to Login</a>
+    </div>
+</div>
+
+<script>
+  let countdown = 3;
+  const countdownElement = document.getElementById("countdown");
+
+  function updateCountdown() {
+      countdown -= 1;
+      countdownElement.textContent = countdown;
+      if (countdown <= 0) {
+          window.location.href = "{% url 'login' %}";
+      }
+  }
+
+  setInterval(updateCountdown, 1000);
+</script>
+{% endblock %}

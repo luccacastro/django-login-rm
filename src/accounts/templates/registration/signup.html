@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="flex items-center justify-center px-4 main-pattern-background">
+  <div class="w-full max-w-md bg-white shadow-md rounded-md p-8 border-1">
+    <h2 class="text-2xl text-[#00979e] font-bold text-center mb-6">Sign up</h2>
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      
+      {% include "partials/form_errors.html" %}
+      
+      <input 
+        type="text" name="first_name" placeholder="First Name"
+        class="w-full py-3 px-3 bg-gray-50 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring focus:border-[#00979e]"
+        required
+      />
+
+      <input 
+        type="text" name="last_name" placeholder="Last Name"
+        class="w-full py-3 px-3 bg-gray-50 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring focus:border-[#00979e]"
+        required
+      />
+
+      <input 
+        type="email" name="email" placeholder="Email Address"
+        class="w-full py-3 px-3 bg-gray-50 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring focus:border-[#00979e]"
+        required
+      />
+
+      <input 
+        type="date" name="birth_date"
+        class="w-full py-3 px-3 bg-gray-50 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring focus:border-[#00979e]"
+        required
+      />
+
+      {{ form.school }}
+
+      <hr class="my-6">
+
+      <input 
+        type="password" name="password1" placeholder="Password"
+        class="w-full py-3 px-3 bg-gray-50 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring focus:border-[#00979e]"
+        required
+      />
+
+      <input 
+        type="password" name="password2" placeholder="Password Confirmation *"
+        class="w-full py-3 px-3 bg-gray-50 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring focus:border-[#00979e]"
+        required
+      />
+
+      <ul class="list-disc ml-5 text-sm text-gray-600 mt-2 space-y-1">
+        <li>Your password can’t be too similar to your other personal information.</li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+        <li>Your password can’t be entirely numeric.</li>
+      </ul>
+
+      <button 
+        type="submit"
+        class="w-full py-3 bg-[#00979e] text-white rounded-md font-semibold hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring"
+      >
+        SIGN UP
+      </button>
+
+      <p class="text-center text-sm text-gray-600 mt-4">
+        Already have an account?
+        <a href="{% url 'login' %}" class="text-blue-500 hover:underline">Sign in</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+{{ form.media }}
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <div class="p-6">
+
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-2xl font-bold text-[#00c4a7]">
+          Welcome back, {{ user.first_name|default:user.email }}!
+        </h1>
+        {% if user.member.birth_date %}
+        <p class="text-gray-400 text-sm">Birth Date: {{ user.member.birth_date }}</p>
+        {% endif %}
+      </div>
+      <div class="space-x-4">
+        <button class="bg-[#00c4a7] hover:bg-[#009b87] text-white px-4 py-2 rounded-md">Create New Course</button>
+        <button class="bg-gray-800 hover:bg-gray-700 text-gray-200 px-4 py-2 rounded-md">Forum Discussion</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6 mb-6">
+      <div class="bg-gray-800 p-4 rounded-md shadow-md">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-gray-400">Your School</p>
+            <p class="text-2xl text-gray-400 font-bold">
+              {% if user.member.school %}
+                {{ user.member.school.name }}
+              {% else %}
+                No School
+              {% endif %}
+            </p>
+          </div>
+          <div class="text-[#00c4a7] text-3xl">🏫</div>
+        </div>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-md shadow-md">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-gray-400">City</p>
+            <p class="text-2xl text-gray-400 font-bold">
+              {% if user.member.school %}
+                {{ user.member.school.city|default:"N/A" }}
+              {% else %}
+                N/A
+              {% endif %}
+            </p>
+          </div>
+          <div class="text-[#00c4a7] text-3xl">📍</div>
+        </div>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-md shadow-md">
+        <div class="flex items-center text-gray-400 justify-between">
+          <div>
+            <p class="text-sm text-gray-400">Phone</p>
+            <p class="text-2xl font-bold">
+              {% if user.member.school %}
+                {{ user.member.school.phone_number|default:"N/A" }}
+              {% else %}
+                N/A
+              {% endif %}
+            </p>
+          </div>
+          <div class="text-[#00c4a7] text-3xl">📞</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6">
+      <div class="bg-gray-800 rounded-md p-4 col-span-1 shadow-md">
+        <h2 class="text-lg font-bold text-[#00c4a7] mb-3">Popular Courses</h2>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between bg-gray-700 p-2 rounded">
+            <p class="font-semibold">UX / UI Design</p>
+            <button class="text-sm text-[#00c4a7] hover:underline">View</button>
+          </div>
+          <div class="flex items-center justify-between bg-gray-700 p-2 rounded">
+            <p class="font-semibold">Marketing 101</p>
+            <button class="text-sm text-[#00c4a7] hover:underline">View</button>
+          </div>
+          <div class="flex items-center justify-between bg-gray-700 p-2 rounded">
+            <p class="font-semibold">Mathematics</p>
+            <button class="text-sm text-[#00c4a7] hover:underline">View</button>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-800 rounded-md p-4 col-span-2 shadow-md">
+        <h2 class="text-lg font-bold text-[#00c4a7] mb-3">School Details</h2>
+        {% if user.member.school %}
+        <p class="mb-2">URN: <span class="text-[#00c4a7]">{{ user.member.school.urn }}</span></p>
+        <p class="mb-2">Status: <span class="text-[#00c4a7]">{{ user.member.school.status|default:"Unknown" }}</span></p>
+        <p class="mb-2">Website:
+          <a href="{{ member.school.website }}" class="text-[#00c4a7] hover:underline" target="_blank">
+            {{ member.school.website|default:"N/A" }}
+          </a>
+        </p>
+        <p class="mb-2">Open Date: 
+          <span class="text-[#00c4a7]">{{ user.member.school.open_date|date:"Y-m-d"|default:"N/A" }}</span>
+        </p>
+        <p class="mb-2">Close Date:
+          <span class="text-[#00c4a7]">{{ user.member.school.close_date|date:"Y-m-d"|default:"N/A" }}</span>
+        </p>
+        {% else %}
+        <p class="text-gray-400">You have no school assigned yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
