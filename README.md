@@ -104,7 +104,7 @@ This app uses email verification for account activation. If email setup isn’t 
 - Python 3.10+
 - Django 5+
 - PostgreSQL (or SQLite for development)
-- Redis (if using async tasks)
+<!-- - Redis (if using async tasks) -->
 
 ## Notes
 - Authenticated users cannot access the login or register pages.
