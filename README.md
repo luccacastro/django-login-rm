@@ -29,8 +29,8 @@ Copy `.env.example` to `.env` and update the necessary values:
 ```sh
 cp .env.example .env
 ```
-
-Modify `.env` with database and email settings:
+OPTIONAL - You'll be able to get the link from the terminal log as well (for demo purposes ofc)
+Modify `.env` with database and email settings :
 ```env
 # Database Configuration
 DB_NAME=ruth_portal
