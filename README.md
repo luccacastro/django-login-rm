@@ -12,6 +12,7 @@ A major focus was ensuring users can register with a valid school without loadin
 
 ### 1. Set up a Virtual Environment
 ```sh
+cd src
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 ```
@@ -38,10 +39,10 @@ DB_PORT=5432
 
 # Email Configuration
 EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-EMAIL_HOST=sandbox.smtp.mailtrap.io
+EMAIL_HOST=***
 EMAIL_PORT=2525
-EMAIL_HOST_USER=c43f742ddb19a5
-EMAIL_HOST_PASSWORD=50b274899e6ef5
+EMAIL_HOST_USER=****
+EMAIL_HOST_PASSWORD=***
 EMAIL_USE_TLS=True
 DEFAULT_FROM_EMAIL=noreply@example.com
 ```
